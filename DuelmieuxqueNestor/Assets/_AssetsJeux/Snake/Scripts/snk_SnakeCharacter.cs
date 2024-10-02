@@ -15,4 +15,5 @@ public class snk_SnakeCharacter : MonoBehaviour
     {
         
     }
+
 }

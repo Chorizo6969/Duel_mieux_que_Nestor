@@ -8,6 +8,10 @@ public class snk_GameManager : MonoBehaviour
     public snk_GameManager Instance => _instance;
     public Event OnTick;
 
+    Coroutine _mainLoop;
+
+    private float Frequency;
+
     void Awake()
     {
         //singleton
@@ -21,9 +25,17 @@ public class snk_GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _mainLoop = StartCoroutine(Loop());
+    }
+
+    private IEnumerator Loop()
+    {
+        while(enabled)
+        {
+            yield return new WaitForSeconds(1);
+           
+        }
     }
 }
