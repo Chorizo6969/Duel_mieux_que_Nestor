@@ -8,7 +8,7 @@ public class snk_SnakeCharacter : MonoBehaviour
     private Vector3 _wantedDirection;
 
     Tilemap tm;
-    [SerializeField] TileBase tile;
+    [SerializeField] TileBase SnakeTile;
 
     Queue<Vector2Int> queue = new Queue<Vector2Int>();
 
@@ -16,6 +16,9 @@ public class snk_SnakeCharacter : MonoBehaviour
     {
         tm=FindObjectOfType<Tilemap>();
         snk_GameManager.Instance.OnTick += OnTick;
+
+        queue.Enqueue((Vector2Int)transform.position.round());
+        //tm.SetTile(transform.position.round(), SnakeTile);
     }
 
     private void Update()
@@ -33,17 +36,29 @@ public class snk_SnakeCharacter : MonoBehaviour
 
     bool checkForFruit()
     {
-        return true;
+        if( tm.GetTile(transform.position.round()) == snk_GameManager.Instance.fruitTile)
+        {
+            snk_GameManager.Instance.InvokeOnFruitGathered();
+            return true;
+        }
+        return false;
     }
 
-    private void UpdateTilemap()
+    bool checkForDangerousTile()
+    {
+        TileBase tile = tm.GetTile(transform.position.round());
+        return tile != null && tile != snk_GameManager.Instance.fruitTile;
+    }
+
+    private void UpdateTilemap(bool extendSnake)
     {
         queue.Enqueue((Vector2Int)transform.position.round());
-        tm.SetTile(transform.position.round(), tile);
-        if(!checkForFruit())
+        tm.SetTile(transform.position.round(), SnakeTile);
+        if(!extendSnake)
         {
             tm.SetTile((Vector3Int)queue.Dequeue(), null);
         }
+
     }
 
 
@@ -56,6 +71,19 @@ public class snk_SnakeCharacter : MonoBehaviour
     void OnTick()
     {
         Move();
-        UpdateTilemap();
+        bool dead = checkForDangerousTile();
+        bool fruit = checkForFruit();
+        UpdateTilemap(fruit);
+
+        if(dead)
+        {
+            print("tmort connard!");
+            print(tm.GetTile(transform.position.round()));
+            print("--");
+            enabled = false;
+        }
     }
+
+
+
 }

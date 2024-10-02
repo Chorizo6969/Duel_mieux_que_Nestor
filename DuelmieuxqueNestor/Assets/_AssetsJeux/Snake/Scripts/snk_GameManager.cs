@@ -2,15 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class snk_GameManager : MonoBehaviour
 {
     public static snk_GameManager Instance { get; private set; }
     public event Action OnTick;
+    public event Action OnFruitGathered;
+
+    [Header("Refrences")]
+    public TileBase fruitTile;
+
 
     Coroutine _mainLoop;
 
-    private float _frequency=3;
+    private float _frequency=5;
 
     void Awake()
     {
@@ -25,6 +31,12 @@ public class snk_GameManager : MonoBehaviour
         }
     }
 
+    public void InvokeOnFruitGathered()
+    {
+        OnFruitGathered?.Invoke();
+        _frequency += 0.5f;
+    }
+
     private void Start()
     {
         _mainLoop = StartCoroutine(Loop());
@@ -35,7 +47,9 @@ public class snk_GameManager : MonoBehaviour
         while(enabled)
         {
             yield return new WaitForSeconds(1f/ _frequency);
-            OnTick.Invoke();
+            OnTick?.Invoke();
         }
     }
+
+
 }
