@@ -1,16 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class snk_GameManager : MonoBehaviour
 {
-    private snk_GameManager _instance;
-    public snk_GameManager Instance => _instance;
-    public Event OnTick;
+    public static snk_GameManager Instance { get; private set; }
+    public event Action OnTick;
 
     Coroutine _mainLoop;
 
-    private float Frequency;
+    private float _frequency=3;
 
     void Awake()
     {
@@ -21,7 +21,7 @@ public class snk_GameManager : MonoBehaviour
         }
         else
         {
-            _instance = this;
+            Instance = this;
         }
     }
 
@@ -34,8 +34,8 @@ public class snk_GameManager : MonoBehaviour
     {
         while(enabled)
         {
-            yield return new WaitForSeconds(1);
-           
+            yield return new WaitForSeconds(1f/ _frequency);
+            OnTick.Invoke();
         }
     }
 }
