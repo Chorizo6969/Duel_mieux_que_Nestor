@@ -58,7 +58,6 @@ public class snk_SnakeCharacter : MonoBehaviour
         {
             tm.SetTile((Vector3Int)queue.Dequeue(), null);
         }
-
     }
 
 
@@ -83,7 +82,5 @@ public class snk_SnakeCharacter : MonoBehaviour
             enabled = false;
         }
     }
-
-
 
 }
