@@ -11,7 +11,13 @@ public class Destroy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(platform);
+            StartCoroutine(Delay());
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Destroy(platform);
     }
 }
