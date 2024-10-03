@@ -10,11 +10,8 @@ public class snk_GameManager : MonoBehaviour
     public event Action OnTick;
     public event Action OnFruitGathered;
 
-    [Header("Refrences")]
     public TileBase fruitTile;
 
-
-    Coroutine _mainLoop;
 
     private float _frequency=5;
 
@@ -39,7 +36,7 @@ public class snk_GameManager : MonoBehaviour
 
     private void Start()
     {
-        _mainLoop = StartCoroutine(Loop());
+        StartCoroutine(Loop());
     }
 
     private IEnumerator Loop()

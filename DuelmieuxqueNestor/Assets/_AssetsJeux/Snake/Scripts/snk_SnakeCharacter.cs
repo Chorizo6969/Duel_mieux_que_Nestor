@@ -7,17 +7,23 @@ public class snk_SnakeCharacter : MonoBehaviour
     private Vector3 _actualDirection;
     private Vector3 _wantedDirection;
 
-    Tilemap tm;
-    [SerializeField] TileBase SnakeTile;
+    private Tilemap tm;
 
-    Queue<Vector2Int> queue = new Queue<Vector2Int>();
+    [Header("References")]
+    [SerializeField] private snk_inputs _Inputs;
+    [SerializeField] private TileBase SnakeTile;
+    [SerializeField] private snk_snakeVisuals Visuals;
+    private Queue<Vector2Int> _queue = new Queue<Vector2Int>();
+
+    
+
 
     private void Start()
     {
         tm=FindObjectOfType<Tilemap>();
         snk_GameManager.Instance.OnTick += OnTick;
 
-        queue.Enqueue((Vector2Int)transform.position.round());
+        _queue.Enqueue((Vector2Int)transform.position.round());
         //tm.SetTile(transform.position.round(), SnakeTile);
     }
 
@@ -29,7 +35,7 @@ public class snk_SnakeCharacter : MonoBehaviour
 
     private void UpdateWantedDirection()
     {
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 input = _Inputs.getInputVector();
         if (Mathf.Abs(input.x) > Mathf.Abs(input.y)) input.y = 0; else input.x = 0;
         if (input != Vector2.zero && input!= -(Vector2)_actualDirection) _wantedDirection = new Vector3(input.x, input.y, 0);
     }
@@ -52,11 +58,11 @@ public class snk_SnakeCharacter : MonoBehaviour
 
     private void UpdateTilemap(bool extendSnake)
     {
-        queue.Enqueue((Vector2Int)transform.position.round());
+        _queue.Enqueue((Vector2Int)transform.position.round());
         tm.SetTile(transform.position.round(), SnakeTile);
         if(!extendSnake)
         {
-            tm.SetTile((Vector3Int)queue.Dequeue(), null);
+            tm.SetTile((Vector3Int)_queue.Dequeue(), null);
         }
     }
 
@@ -73,10 +79,10 @@ public class snk_SnakeCharacter : MonoBehaviour
         bool dead = checkForDangerousTile();
         bool fruit = checkForFruit();
         UpdateTilemap(fruit);
+        Visuals.UpdateVisuals(_queue);
 
-        if(dead)
+        if (dead)
         {
-            print("tmort connard!");
             print(tm.GetTile(transform.position.round()));
             print("--");
             enabled = false;
