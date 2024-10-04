@@ -2313,7 +2313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &958837216
 Rigidbody2D:
   serializedVersion: 4
@@ -2466,7 +2466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68192bea8cfbd6045a2d2174f7ffcce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 5
+  _playerSpeed: 6
   _camscroll: {fileID: 261451846}
   _joueur1: 1
 --- !u!114 &958837221
@@ -5216,7 +5216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e50e198affbaea468eff6316bf0c8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightDirection: 1
 --- !u!4 &5089535335451889536
 Transform:
   m_ObjectHideFlags: 0
