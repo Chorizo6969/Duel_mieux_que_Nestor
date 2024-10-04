@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Script qqui gère le scroll de la caméra (ainsi que les limites du terrain de jeu
 /// </summary>
-public class Camscroll : MonoBehaviour
+public class Dood_Camscroll : MonoBehaviour
 {
     private bool canstart = false;
 

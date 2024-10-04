@@ -3,13 +3,13 @@ using UnityEngine;
 /// <summary>
 /// Script qui gère les déplacements des 2 joueurs
 /// </summary>
-public class PlayerMovement : MonoBehaviour
+public class Dood_PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float _playerSpeed;
 
     [SerializeField]
-    private Camscroll _camscroll; //liens vers le script camScroll
+    private Dood_Camscroll _camscroll; //liens vers le script camScroll
 
     [SerializeField]
     private bool _joueur1; //Pour pouvoir différentier depuis l'inspecteur qui est joueur 1

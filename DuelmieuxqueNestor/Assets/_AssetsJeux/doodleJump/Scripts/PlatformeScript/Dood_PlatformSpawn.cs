@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Script qui gère l'apparition des plateformes dans le jeu (la vitesse ainsi que l'origine)
 /// </summary>
-public class PlatformSpawn : MonoBehaviour
+public class Dood_PlatformSpawn : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> _spawnList; // Nombre de point d'apparition possible

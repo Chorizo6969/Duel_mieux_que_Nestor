@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa1253a71cb69b4c9ccbede468e4706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 335007737}
+  _destination: {fileID: 335007737}
   _canTp: 1
 --- !u!1 &177440660
 GameObject:
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa1253a71cb69b4c9ccbede468e4706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 130761530}
+  _destination: {fileID: 130761530}
   _canTp: 1
 --- !u!1 &407179573
 GameObject:
@@ -2481,8 +2481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d6dbfec6c292046982e12c52076f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victoryText: Victoire du Joueur 2 !
-  afficheText: {fileID: 317625833}
+  _victoryText: Victoire du Joueur 2 !
+  _afficheText: {fileID: 317625833}
 --- !u!1 &963973743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,7 +2763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1069024469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2931,8 +2931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d6dbfec6c292046982e12c52076f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victoryText: Victoire du joueur 1 !
-  afficheText: {fileID: 457139415}
+  _victoryText: Victoire du Joueur 1 !
+  _afficheText: {fileID: 457139415}
 --- !u!1 &1070314803
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9023765118849568096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform_move
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9076584758680677192}
   - component: {fileID: 2786312725897256341}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallL
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -124,9 +124,9 @@ GameObject:
   - component: {fileID: 7501258415466616123}
   - component: {fileID: 3467883509783325869}
   - component: {fileID: 1529235528458421709}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plateforme_move
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e50e198affbaea468eff6316bf0c8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droite: 1
+  RightDirection: 1
 --- !u!50 &1529235528458421709
 Rigidbody2D:
   serializedVersion: 4
@@ -293,9 +293,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4488810283362634370}
   - component: {fileID: 9065903202617126495}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallR
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

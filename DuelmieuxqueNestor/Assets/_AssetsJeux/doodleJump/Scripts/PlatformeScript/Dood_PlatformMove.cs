@@ -3,9 +3,9 @@ using UnityEngine;
 /// <summary>
 /// Script qui gère le comportement des plateformes qui bouge.
 /// </summary>
-public class PlatformMove : MonoBehaviour
+public class Dood_PlatformMove : MonoBehaviour
 {
-    public bool RightDirection = true; //La plateforme commence par allé vers la droite
+    private bool RightDirection = true; //La plateforme commence par aller vers la droite
     private float _speed = 2;
 
     private void Update()
@@ -26,7 +26,7 @@ public class PlatformMove : MonoBehaviour
     /// <param name="collision"> le joueur ou les murs maximum </param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.layer == 10)
         {
             if (RightDirection)
             {
