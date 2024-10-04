@@ -521,9 +521,9 @@ GameObject:
   - component: {fileID: 269941887}
   - component: {fileID: 269941886}
   - component: {fileID: 269941885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (14)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1173,9 +1173,9 @@ GameObject:
   - component: {fileID: 407179576}
   - component: {fileID: 407179575}
   - component: {fileID: 407179574}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (10)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1303,9 +1303,9 @@ GameObject:
   - component: {fileID: 441458693}
   - component: {fileID: 441458692}
   - component: {fileID: 441458691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (12)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1568,9 +1568,9 @@ GameObject:
   - component: {fileID: 476490194}
   - component: {fileID: 476490193}
   - component: {fileID: 476490192}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (5)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1926,9 +1926,9 @@ GameObject:
   - component: {fileID: 703405624}
   - component: {fileID: 703405623}
   - component: {fileID: 703405625}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2174,9 +2174,9 @@ GameObject:
   - component: {fileID: 926485660}
   - component: {fileID: 926485659}
   - component: {fileID: 926485658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (8)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2309,7 +2309,7 @@ GameObject:
   - component: {fileID: 958837221}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2494,9 +2494,9 @@ GameObject:
   - component: {fileID: 963973744}
   - component: {fileID: 963973746}
   - component: {fileID: 963973745}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (15)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2759,11 +2759,11 @@ GameObject:
   - component: {fileID: 1069024474}
   m_Layer: 6
   m_Name: Player 2
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1069024469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,9 +2991,9 @@ GameObject:
   - component: {fileID: 1149464083}
   - component: {fileID: 1149464082}
   - component: {fileID: 1149464081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (11)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3293,9 +3293,9 @@ GameObject:
   - component: {fileID: 1329263491}
   - component: {fileID: 1329263490}
   - component: {fileID: 1329263489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (6)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3423,9 +3423,9 @@ GameObject:
   - component: {fileID: 1356333398}
   - component: {fileID: 1356333397}
   - component: {fileID: 1356333396}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (13)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3689,9 +3689,9 @@ GameObject:
   - component: {fileID: 1606948533}
   - component: {fileID: 1606948532}
   - component: {fileID: 1606948531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (9)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4273,9 +4273,9 @@ GameObject:
   - component: {fileID: 1865709770}
   - component: {fileID: 1865709769}
   - component: {fileID: 1865709768}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (7)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4589,9 +4589,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8262332840903468939}
   - component: {fileID: 3023545820495155542}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallL
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4607,7 +4607,7 @@ GameObject:
   - component: {fileID: 8243250733846905251}
   m_Layer: 0
   m_Name: Platform_move_Package
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5152,9 +5152,9 @@ GameObject:
   - component: {fileID: 7441882308773583352}
   - component: {fileID: 4575472380375949422}
   - component: {fileID: 1902733263870445838}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plateforme_move
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5303,9 +5303,9 @@ GameObject:
   - component: {fileID: 6306280082786667177}
   - component: {fileID: 2379357912857008157}
   - component: {fileID: 4296966717144247578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5388,9 +5388,9 @@ GameObject:
   - component: {fileID: 5089535335451889536}
   - component: {fileID: 3468031562433240372}
   - component: {fileID: 3063614638541858867}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (1)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5406,9 +5406,9 @@ GameObject:
   - component: {fileID: 5089535335545243642}
   - component: {fileID: 3468031562811741518}
   - component: {fileID: 3063614638448500809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (4)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5424,9 +5424,9 @@ GameObject:
   - component: {fileID: 5089535336157209715}
   - component: {fileID: 3468031562333255367}
   - component: {fileID: 3063614637835748288}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (3)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5442,9 +5442,9 @@ GameObject:
   - component: {fileID: 5089535336077541377}
   - component: {fileID: 3468031562278687413}
   - component: {fileID: 3063614637907027890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme (2)
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5459,9 +5459,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3536530108238644801}
   - component: {fileID: 8255024050744287900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallR
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

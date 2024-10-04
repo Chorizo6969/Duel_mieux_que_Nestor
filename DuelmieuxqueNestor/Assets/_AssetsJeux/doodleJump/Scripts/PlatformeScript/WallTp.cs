@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Script qui gère le comportement des murs du jeu (Si le joueur touche un mur, il doit garder la même pos en y mais de l'autre côté du mur)
+/// </summary>
 public class WallTp : MonoBehaviour
 {
     [SerializeField]

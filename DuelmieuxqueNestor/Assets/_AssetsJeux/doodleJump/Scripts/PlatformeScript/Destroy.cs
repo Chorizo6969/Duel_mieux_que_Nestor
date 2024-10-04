@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Script qui gère les plateformes fragiles
+/// </summary>
 public class Destroy : MonoBehaviour
 {
     [SerializeField]
