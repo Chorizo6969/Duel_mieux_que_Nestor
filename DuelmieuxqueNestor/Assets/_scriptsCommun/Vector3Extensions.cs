@@ -9,5 +9,4 @@ public static class Vector3Extensions
         return new Vector3Int(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y), Mathf.RoundToInt(v.z));
     }
 
-
 }

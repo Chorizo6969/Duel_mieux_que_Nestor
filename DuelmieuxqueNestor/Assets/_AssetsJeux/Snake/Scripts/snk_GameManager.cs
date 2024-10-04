@@ -26,10 +26,12 @@ public class snk_GameManager : MonoBehaviour
     public TileBase fruitTile;
     [Header("References")]
     [SerializeField] private Tilemap _tilemap;
+    [SerializeField] private snk_MainText mainUIText;
 
     [Header("Parameters")]
     [SerializeField] private int fruitCount = 3;
 
+    private List<snk_SnakeCharacter> snakes = new();
 
     //Tilemap
     public void RemoveTileAt(Vector2Int pose)
@@ -79,10 +81,19 @@ public class snk_GameManager : MonoBehaviour
         CheckForFreeTiles();
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
-        _gameLoopCoroutine = StartCoroutine(Loop());
         for (int i = 0; i < fruitCount; i++) spawnNewFruit();
+
+        for(int i =3;i>0;i--)
+        {
+            mainUIText.setText(i.ToString());
+            yield return new WaitForSeconds(1);
+        }
+        mainUIText.setText("");
+
+        _gameLoopCoroutine = StartCoroutine(Loop());
+
     }
 
     public void InvokeOnFruitGathered()
@@ -106,7 +117,20 @@ public class snk_GameManager : MonoBehaviour
         }
     }
 
-    public void triggerGameOver(PlayerInfo WinerPlayerInfo)
+    public void RegisterSnake(snk_SnakeCharacter snake)
+    {
+        snakes.Add(snake);
+    }
+    public void UnRegisterSnake(snk_SnakeCharacter snake)
+    {
+        snakes.Remove(snake);
+        if (snakes.Count <= 1)
+        {
+            triggerGameOver(snakes[0]._PlayerInfo);
+        }
+    }
+
+    private void triggerGameOver(PlayerInfo WinerPlayerInfo)
     {
         StopCoroutine(_gameLoopCoroutine);
         OnGameOver?.Invoke(WinerPlayerInfo);

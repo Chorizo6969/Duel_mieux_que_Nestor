@@ -49,8 +49,8 @@ public class snk_snakeVisuals : MonoBehaviour
 
             tm.SetTile((Vector3Int)ar[i], tiles[ MaskToArrayIndex[Mask]]);
         }
-
     }
+
     public static string ByteToBinaryString(byte byteIn)
     {
         StringBuilder out_string = new StringBuilder();

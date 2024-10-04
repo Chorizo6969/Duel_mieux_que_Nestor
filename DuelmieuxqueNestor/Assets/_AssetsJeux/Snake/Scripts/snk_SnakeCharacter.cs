@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -17,11 +18,14 @@ public class snk_SnakeCharacter : MonoBehaviour
     private Queue<Vector2Int> _queue = new Queue<Vector2Int>();
 
     [Header("Parameters")]
-    [SerializeField] PlayerInfo _PlayerInfo;
+    public PlayerInfo _PlayerInfo;
 
     private void Start()
     {
         snk_GameManager.Instance.OnTick += OnTick;
+        snk_GameManager.Instance.OnGameOver += onGameOver;
+        snk_GameManager.Instance.RegisterSnake(this) ;
+
         _queue.Enqueue((Vector2Int)transform.position.round());
     }
 
@@ -86,7 +90,25 @@ public class snk_SnakeCharacter : MonoBehaviour
         {
             print(gm.GetTileAt((Vector2Int)transform.position.round()));
             print("--");
-            snk_GameManager.Instance.triggerGameOver(this._PlayerInfo);
+            snk_GameManager.Instance.UnRegisterSnake(this) ;
+        }
+    }
+
+    void onGameOver(PlayerInfo winner)
+    {
+        if (this._PlayerInfo != winner)
+        {
+            destroyBody();  
+        }
+    }
+
+    async void destroyBody()
+    {
+        while (_queue.Count>0)
+        {
+            gm.SetTileAt(_queue.Dequeue(), null);
+            Visuals.Redraw(_queue);
+            await Task.Delay(150);
         }
     }
 
