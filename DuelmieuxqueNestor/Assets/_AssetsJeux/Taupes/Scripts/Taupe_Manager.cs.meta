@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 59207588bc0f1db40ade11ec48f702cf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Taupe_z: {fileID: 6507489772559145357, guid: 782e1687c7729d14db8a6ddb7928f731, type: 3}
+  - Taupe_s: {fileID: 3802351210710233135, guid: 408b95223f3c5c34dbe268854ee79b71, type: 3}
+  - Taupe_d: {fileID: 3507223359549997110, guid: e1c2461be6a219643ab5046bcdfbb9eb, type: 3}
+  - Taupe_q: {fileID: 4222873424693772482, guid: 617e982ced6c20943b2873cbd1e15a52, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
