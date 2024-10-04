@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -7,7 +8,6 @@ public class snk_SnakeCharacter : MonoBehaviour
     private Vector3 _actualDirection = Vector3.up;
     private Vector3 _wantedDirection = Vector3.up;
 
-
     private snk_GameManager gm => snk_GameManager.Instance;
 
     [Header("References")]
@@ -16,6 +16,8 @@ public class snk_SnakeCharacter : MonoBehaviour
     [SerializeField] private snk_snakeVisuals Visuals;
     private Queue<Vector2Int> _queue = new Queue<Vector2Int>();
 
+    [Header("Parameters")]
+    [SerializeField] PlayerInfo _PlayerInfo;
 
     private void Start()
     {
@@ -84,8 +86,15 @@ public class snk_SnakeCharacter : MonoBehaviour
         {
             print(gm.GetTileAt((Vector2Int)transform.position.round()));
             print("--");
-            enabled = false;
+            snk_GameManager.Instance.triggerGameOver(this._PlayerInfo);
         }
     }
 
+}
+
+[Serializable]
+public class PlayerInfo
+{
+    public Color color;
+    public string name;
 }

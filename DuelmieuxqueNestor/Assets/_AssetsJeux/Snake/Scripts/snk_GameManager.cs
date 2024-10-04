@@ -8,8 +8,11 @@ using UnityEngine.WSA;
 public class snk_GameManager : MonoBehaviour
 {
 
-    public List<Vector2Int> freeTiles = new List<Vector2Int>();
+    [HideInInspector] public List<Vector2Int> freeTiles = new List<Vector2Int>();
+    
+    //game loop
     private float _frequency = 5;
+    private Coroutine _gameLoopCoroutine;
 
     //singleton
     public static snk_GameManager Instance { get; private set; }
@@ -17,10 +20,11 @@ public class snk_GameManager : MonoBehaviour
     //events
     public event Action OnTick;
     public event Action OnFruitGathered;
+    public event Action<PlayerInfo> OnGameOver;
 
 
     public TileBase fruitTile;
-    [Header("Refrences")]
+    [Header("References")]
     [SerializeField] private Tilemap _tilemap;
 
     [Header("Parameters")]
@@ -49,11 +53,12 @@ public class snk_GameManager : MonoBehaviour
     void CheckForFreeTiles()
     {
         freeTiles.Clear();
-        for(int x = 0; x < 10; x++) //au secours
+        for(int x = -17; x <= 17; x++) //au secours
         {
-            for (int y = 0; y < 10; y++)
+            for (int y = -9; y <= 9; y++)
             {
-                if(_tilemap.GetTile(new Vector3Int(x, y))==null) freeTiles.Add(new Vector2Int(x, y));
+                Debug.DrawRay(new Vector3Int(x, y), Vector3.up*0.5f, Color.red, 1);
+                if (_tilemap.GetTile(new Vector3Int(x, y))==null) freeTiles.Add(new Vector2Int(x, y));
             }
         }
     }
@@ -74,6 +79,12 @@ public class snk_GameManager : MonoBehaviour
         CheckForFreeTiles();
     }
 
+    private void Start()
+    {
+        _gameLoopCoroutine = StartCoroutine(Loop());
+        for (int i = 0; i < fruitCount; i++) spawnNewFruit();
+    }
+
     public void InvokeOnFruitGathered()
     {
         OnFruitGathered?.Invoke();
@@ -83,12 +94,7 @@ public class snk_GameManager : MonoBehaviour
 
     private void spawnNewFruit()
     {
-        SetTileAt(freeTiles[UnityEngine.Random.Range(0, freeTiles.Count)],fruitTile);
-    }
-
-    private void Start()
-    {
-        StartCoroutine(Loop());
+        SetTileAt(freeTiles[UnityEngine.Random.Range(0, freeTiles.Count-1)],fruitTile);
     }
 
     private IEnumerator Loop()
@@ -100,5 +106,10 @@ public class snk_GameManager : MonoBehaviour
         }
     }
 
+    public void triggerGameOver(PlayerInfo WinerPlayerInfo)
+    {
+        StopCoroutine(_gameLoopCoroutine);
+        OnGameOver?.Invoke(WinerPlayerInfo);
+    }
 
 }
