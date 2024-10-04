@@ -36,7 +36,7 @@ public class snk_snakeVisuals : MonoBehaviour
 
     public List<TileBase> tiles = new List<TileBase>();
 
-    public void UpdateVisuals(Queue<Vector2Int> queue )
+    public void Redraw(Queue<Vector2Int> queue )
     {
         Vector2Int[] ar = queue.ToArray();
         for(int i = 0; i < ar.Length; i++)
@@ -45,7 +45,7 @@ public class snk_snakeVisuals : MonoBehaviour
             Vector2Int ToPrevious = ar[Mathf.Clamp(i - 1, 0, ar.Length-1)] -ar[i] ;
 
             byte Mask = (byte) (VectorToMask[ToNext] ^ VectorToMask[ToPrevious]);
-            print($"U: {ToNext} , V: {ToPrevious} , Mask: {ByteToBinaryString(Mask)} , Index : {MaskToArrayIndex[Mask]}");
+            //print($"U: {ToNext} , V: {ToPrevious} , Mask: {ByteToBinaryString(Mask)} , Index : {MaskToArrayIndex[Mask]}");
 
             tm.SetTile((Vector3Int)ar[i], tiles[ MaskToArrayIndex[Mask]]);
         }

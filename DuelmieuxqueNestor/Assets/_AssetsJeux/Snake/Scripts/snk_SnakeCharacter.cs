@@ -4,10 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class snk_SnakeCharacter : MonoBehaviour
 {
-    private Vector3 _actualDirection;
-    private Vector3 _wantedDirection;
+    private Vector3 _actualDirection = Vector3.up;
+    private Vector3 _wantedDirection = Vector3.up;
 
-    private Tilemap tm;
+
+    private snk_GameManager gm => snk_GameManager.Instance;
 
     [Header("References")]
     [SerializeField] private snk_inputs _Inputs;
@@ -15,16 +16,11 @@ public class snk_SnakeCharacter : MonoBehaviour
     [SerializeField] private snk_snakeVisuals Visuals;
     private Queue<Vector2Int> _queue = new Queue<Vector2Int>();
 
-    
-
 
     private void Start()
     {
-        tm=FindObjectOfType<Tilemap>();
         snk_GameManager.Instance.OnTick += OnTick;
-
         _queue.Enqueue((Vector2Int)transform.position.round());
-        //tm.SetTile(transform.position.round(), SnakeTile);
     }
 
     private void Update()
@@ -42,7 +38,7 @@ public class snk_SnakeCharacter : MonoBehaviour
 
     bool checkForFruit()
     {
-        if( tm.GetTile(transform.position.round()) == snk_GameManager.Instance.fruitTile)
+        if(gm.GetTileAt((Vector2Int)transform.position.round()) == snk_GameManager.Instance.fruitTile)
         {
             snk_GameManager.Instance.InvokeOnFruitGathered();
             return true;
@@ -52,17 +48,17 @@ public class snk_SnakeCharacter : MonoBehaviour
 
     bool checkForDangerousTile()
     {
-        TileBase tile = tm.GetTile(transform.position.round());
+        TileBase tile = gm.GetTileAt((Vector2Int)transform.position.round());
         return tile != null && tile != snk_GameManager.Instance.fruitTile;
     }
 
-    private void UpdateTilemap(bool extendSnake)
+    private void UpdateQueue(bool extendSnake)
     {
         _queue.Enqueue((Vector2Int)transform.position.round());
-        tm.SetTile(transform.position.round(), SnakeTile);
+        gm.SetTileAt((Vector2Int)transform.position.round(), SnakeTile);
         if(!extendSnake)
         {
-            tm.SetTile((Vector3Int)_queue.Dequeue(), null);
+            gm.SetTileAt(_queue.Dequeue(), null);
         }
     }
 
@@ -76,14 +72,17 @@ public class snk_SnakeCharacter : MonoBehaviour
     void OnTick()
     {
         Move();
+
+        //tilemap checks
         bool dead = checkForDangerousTile();
-        bool fruit = checkForFruit();
-        UpdateTilemap(fruit);
-        Visuals.UpdateVisuals(_queue);
+        bool shouldExtendSnake = checkForFruit();
+
+        UpdateQueue(shouldExtendSnake);
+        Visuals.Redraw(_queue);
 
         if (dead)
         {
-            print(tm.GetTile(transform.position.round()));
+            print(gm.GetTileAt((Vector2Int)transform.position.round()));
             print("--");
             enabled = false;
         }
