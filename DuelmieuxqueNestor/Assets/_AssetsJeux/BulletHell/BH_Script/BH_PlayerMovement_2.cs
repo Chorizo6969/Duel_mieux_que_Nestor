@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BH_PlayerMovement_2 : MonoBehaviour
+{
+    public float speed = 10f;
+    public string Nb_Player;
+    public Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        float moveX = 0f;
+        float moveY = 0f;
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            moveY = 1f;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            moveY = -1f;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveX = 1f;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveX = -1f;
+        }
+        rb.velocity = new Vector2(moveX, moveY) * speed;
+    }
+
+    public void OnDeathPlayer()
+    {
+        Destroy(gameObject);
+    }
+}

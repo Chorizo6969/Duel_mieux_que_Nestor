@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BH_Wall
+  - BH_Player_1
+  - BH_Player_2
+  - BH_Bullet
   layers:
   - Default
   - TransparentFX
