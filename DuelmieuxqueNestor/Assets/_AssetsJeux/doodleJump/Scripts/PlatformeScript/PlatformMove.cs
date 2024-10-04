@@ -1,35 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script qui gère le comportement des plateformes qui bouge.
+/// </summary>
 public class PlatformMove : MonoBehaviour
 {
-    public bool droite = true;
-    private float speed = 2;
+    public bool RightDirection = true; //La plateforme commence par allé vers la droite
+    private float _speed = 2;
 
     private void Update()
     {
-        if (droite)
+        if (RightDirection)
         {
-            gameObject.transform.Translate(new Vector3(1, 0, 0) * speed * Time.deltaTime);
+            gameObject.transform.Translate(new Vector3(1, 0, 0) * _speed * Time.deltaTime);
         }
         else
         {
-            gameObject.transform.Translate(new Vector3(-1, 0, 0) * speed * Time.deltaTime);
+            gameObject.transform.Translate(new Vector3(-1, 0, 0) * _speed * Time.deltaTime);
         }
     }
 
+    /// <summary>
+    /// Fonction qui vérifie si la plateforme à atteint une des 2 extrémités de son mouvement
+    /// </summary>
+    /// <param name="collision"> le joueur ou les murs maximum </param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
         {
-            if (droite)
+            if (RightDirection)
             {
-                droite = false;
+                RightDirection = false;
             }
             else
             {
-                droite = true;
+                RightDirection = true;
             }
         }
     }

@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script qui gère les déplacements des 2 joueurs
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float PlayerSpeed;
+    private float _playerSpeed;
 
     [SerializeField]
-    private Camscroll _camscroll;
+    private Camscroll _camscroll; //liens vers le script camScroll
 
     [SerializeField]
-    private bool _joueur1;
+    private bool _joueur1; //Pour pouvoir différentier depuis l'inspecteur qui est joueur 1
 
     private void Update()
     {
@@ -19,25 +20,25 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(new Vector3(1, 0, 0) * PlayerSpeed * Time.deltaTime);
+                transform.Translate(new Vector3(1, 0, 0) * _playerSpeed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(new Vector3(-1, 0, 0) * PlayerSpeed * Time.deltaTime);
+                transform.Translate(new Vector3(-1, 0, 0) * _playerSpeed * Time.deltaTime);
             }
         }
         else //Joueur 2
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.Translate(new Vector3(1, 0, 0) * PlayerSpeed * Time.deltaTime);
+                transform.Translate(new Vector3(1, 0, 0) * _playerSpeed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.Translate(new Vector3(-1, 0, 0) * PlayerSpeed * Time.deltaTime);
+                transform.Translate(new Vector3(-1, 0, 0) * _playerSpeed * Time.deltaTime);
             }
         }
 
-        transform.position = _camscroll.cameraLimits.ClosestPoint(transform.position); //Mur du jeu
+        transform.position = _camscroll.CameraLimits.ClosestPoint(transform.position); //On empêche le joueur de sortir des limites du jeu.
     }
 }

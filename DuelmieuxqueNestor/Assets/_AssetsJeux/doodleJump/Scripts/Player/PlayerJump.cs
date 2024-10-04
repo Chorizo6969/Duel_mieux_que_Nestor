@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
@@ -7,6 +6,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]
     private GameObject _papa;
 
+    private GameObject brockenplatform;
     private Vector2 actualpos;
     private Vector2 oldpos;
 
@@ -24,8 +24,6 @@ public class PlayerJump : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         actualpos = _papa.transform.position;
-        Debug.Log(actualpos);
-        Debug.Log(oldpos);
         if (actualpos.y <= oldpos.y)
         {
             if (collision.gameObject.tag == "Platform")
@@ -33,6 +31,19 @@ public class PlayerJump : MonoBehaviour
                 _papa.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 _papa.GetComponent<Rigidbody2D>().AddForce(transform.up * 425);
             }
+            if (collision.gameObject.layer == 8)
+            {
+                brockenplatform = collision.gameObject;
+                _papa.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                _papa.GetComponent<Rigidbody2D>().AddForce(transform.up * 425);
+                StartCoroutine(Delay());
+            }
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Destroy(brockenplatform);
     }
 }
