@@ -15,11 +15,16 @@ public class Dood_CleanLevel : MonoBehaviour
     }
 
     /// <summary>
-    /// Fonction qui détruit tput ce qui rentre dans la zone
+    /// Fonction qui détruit tout ce qui rentre dans la zone
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == 9)
+        {
+            Destroy(collision.gameObject.transform.parent.gameObject); //Détruire la parent de la plateforme
+            return;
+        }
         Destroy(collision.gameObject);
         if (collision.gameObject.layer == 6) //Si c'est 1 joueur...
         {
