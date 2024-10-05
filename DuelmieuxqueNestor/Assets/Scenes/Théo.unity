@@ -273,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 285577547}
   - component: {fileID: 285577548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject (1)
   m_TagString: BH_Wall
   m_Icon: {fileID: 0}
@@ -353,7 +353,8 @@ GameObject:
   - component: {fileID: 504294172}
   - component: {fileID: 504294173}
   - component: {fileID: 504294174}
-  m_Layer: 0
+  - component: {fileID: 504294175}
+  m_Layer: 6
   m_Name: Player2
   m_TagString: BH_Player_2
   m_Icon: {fileID: 0}
@@ -514,6 +515,21 @@ MonoBehaviour:
   speed: 10
   Nb_Player: 2
   rb: {fileID: 504294172}
+--- !u!114 &504294175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504294168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29b2bd9976ee84438bffcae59331543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  IsPlayer1: 0
+  rb: {fileID: 504294172}
 --- !u!1 &735802815
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820537241}
   - component: {fileID: 820537242}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject (3)
   m_TagString: BH_Wall
   m_Icon: {fileID: 0}
@@ -873,7 +889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1295638095}
   - component: {fileID: 1295638096}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: BH_Wall
   m_Icon: {fileID: 0}
@@ -950,7 +966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1381005075}
   - component: {fileID: 1381005076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject (2)
   m_TagString: BH_Wall
   m_Icon: {fileID: 0}
@@ -1118,7 +1134,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4800373746184091954, guid: 43dc9467bb4dce24fa8f550fe2a16c74, type: 3}
   ShootGizmo: {fileID: 735802816}
   BulletSpeed: 10
-  RotationSpeed: 20
+  RotationSpeed: 30
   CurrentAngle: 90
   MinAngle: -10
   MaxAngle: 90
@@ -1155,7 +1171,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4800373746184091954, guid: 43dc9467bb4dce24fa8f550fe2a16c74, type: 3}
   ShootGizmo: {fileID: 1814187259}
   BulletSpeed: 10
-  RotationSpeed: 20
+  RotationSpeed: 40
   CurrentAngle: -100
   MinAngle: -180
   MaxAngle: -80
@@ -1302,7 +1318,8 @@ GameObject:
   - component: {fileID: 2128681851}
   - component: {fileID: 2128681853}
   - component: {fileID: 2128681854}
-  m_Layer: 0
+  - component: {fileID: 2128681855}
+  m_Layer: 6
   m_Name: Player1
   m_TagString: BH_Player_1
   m_Icon: {fileID: 0}
@@ -1461,7 +1478,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  Nb_Player: 1
+  IsPlayer1: 0
+  rb: {fileID: 2128681851}
+--- !u!114 &2128681855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128681848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29b2bd9976ee84438bffcae59331543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  IsPlayer1: 1
   rb: {fileID: 2128681851}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

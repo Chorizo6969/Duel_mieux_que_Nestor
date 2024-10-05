@@ -52,7 +52,7 @@ public class BH_BulletInstancier : MonoBehaviour
 
     private IEnumerator ShootBullet()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         GameObject balle = Instantiate(BulletPrefab, ShootGizmo.position, ShootGizmo.rotation);
         Rigidbody2D rb = balle.GetComponent<Rigidbody2D>();
         rb.velocity = ShootGizmo.right * BulletSpeed;
