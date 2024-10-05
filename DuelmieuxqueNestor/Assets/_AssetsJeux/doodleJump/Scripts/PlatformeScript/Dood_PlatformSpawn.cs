@@ -55,6 +55,7 @@ public class Dood_PlatformSpawn : MonoBehaviour
                 plateform.transform.position = _spawnList[index].transform.position;
             }
         }
+
     }
 
     /// <summary>
