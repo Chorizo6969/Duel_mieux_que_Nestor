@@ -83,15 +83,32 @@ public class snk_GameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        //feedbacks fruits
+        OnFruitGathered += () => PostProcessController.instance.E_ExposureFlash.play();
+        OnFruitGathered += () => PostProcessController.instance.E_ScreenDistortion.play();
+        OnGameOver += (PlayerInfo winner) => PostProcessController.instance.FadeOut.play();
+
+        PostProcessController.instance.FadeIn.play();
+
+        //spawn fruits
         for (int i = 0; i < fruitCount; i++) spawnNewFruit();
 
+        //countdown
         for(int i =3;i>0;i--)
         {
             mainUIText.setText(i.ToString());
-            yield return new WaitForSeconds(1);
+
+            yield return new WaitForSeconds(.7f);
+
+            PostProcessController.instance.E_ScreenDistortion.play();
+            PostProcessController.instance.E_ExposureFlash.play();
+
         }
         mainUIText.setText("");
+        PostProcessController.instance.E_ScreenDistortion.play();
+        PostProcessController.instance.E_ExposureFlash.play();
 
+        //lancement du jeu
         _gameLoopCoroutine = StartCoroutine(Loop());
 
     }

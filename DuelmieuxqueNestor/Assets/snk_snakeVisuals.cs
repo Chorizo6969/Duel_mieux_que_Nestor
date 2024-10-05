@@ -41,13 +41,17 @@ public class snk_snakeVisuals : MonoBehaviour
         Vector2Int[] ar = queue.ToArray();
         for(int i = 0; i < ar.Length; i++)
         {
-            Vector2Int ToNext = ar[Mathf.Clamp( i+1,0,ar.Length-1)] - ar[i] ;
+            Vector2Int ToNext = (ar[Mathf.Clamp( i+1,0,ar.Length-1)] - ar[i]) ;
             Vector2Int ToPrevious = ar[Mathf.Clamp(i - 1, 0, ar.Length-1)] -ar[i] ;
 
-            byte Mask = (byte) (VectorToMask[ToNext] ^ VectorToMask[ToPrevious]);
-            //print($"U: {ToNext} , V: {ToPrevious} , Mask: {ByteToBinaryString(Mask)} , Index : {MaskToArrayIndex[Mask]}");
+            ToNext.Clamp(-Vector2Int.one, Vector2Int.one);
+            ToPrevious.Clamp(-Vector2Int.one, Vector2Int.one);
 
-            tm.SetTile((Vector3Int)ar[i], tiles[ MaskToArrayIndex[Mask]]);
+                byte Mask = (byte)(VectorToMask[ToNext] ^ VectorToMask[ToPrevious]);
+                //print($"U: {ToNext} , V: {ToPrevious} , Mask: {ByteToBinaryString(Mask)} , Index : {MaskToArrayIndex[Mask]}");
+
+                tm.SetTile((Vector3Int)ar[i], tiles[MaskToArrayIndex[Mask]]);
+            
         }
     }
 

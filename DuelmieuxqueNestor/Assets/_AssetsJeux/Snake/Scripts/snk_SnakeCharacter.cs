@@ -73,6 +73,9 @@ public class snk_SnakeCharacter : MonoBehaviour
     {
         _actualDirection = _wantedDirection;
         transform.position =(transform.position + _actualDirection).round();
+
+        if (Mathf.Abs(transform.position.y) >= 11) transform.position = new Vector2(transform.position.x, -transform.position.y + 1 * Mathf.Sign(transform.position.y));
+        if (Mathf.Abs(transform.position.x) >= 19) transform.position = new Vector2(-transform.position.x + 1 * Mathf.Sign(transform.position.x), transform.position.y);
     }
 
     void OnTick()
@@ -88,8 +91,8 @@ public class snk_SnakeCharacter : MonoBehaviour
 
         if (dead)
         {
-            print(gm.GetTileAt((Vector2Int)transform.position.round()));
-            print("--");
+            //print(gm.GetTileAt((Vector2Int)transform.position.round()));
+            //print("--");
             snk_GameManager.Instance.UnRegisterSnake(this) ;
         }
     }
