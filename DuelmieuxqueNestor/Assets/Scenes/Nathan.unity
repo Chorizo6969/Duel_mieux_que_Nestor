@@ -301,7 +301,7 @@ MonoBehaviour:
   mVolumeProfile: {fileID: 11400000, guid: 145fd0fbfa0d0b94082bf9a66065814e, type: 2}
   E_ExposureFlash:
     duration: 0.2
-    offset: 0.3
+    offset: 0.5
     AlphaCurve01:
       serializedVersion: 2
       m_Curve:
@@ -336,8 +336,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   E_ScreenDistortion:
-    duration: 0.3
-    offset: -0.15
+    duration: 0.5
+    offset: -0.18
     AlphaCurve01:
       serializedVersion: 2
       m_Curve:
