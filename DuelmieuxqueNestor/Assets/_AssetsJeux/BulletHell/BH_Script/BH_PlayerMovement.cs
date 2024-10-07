@@ -8,6 +8,13 @@ public class BH_PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    Vector2 vel;
+    [SerializeField] 
+    float smoothTime;
+
+    [SerializeField]
+    BH_PlayerManager playermanager;
+
     void Update()
     {
         float moveX = 0f;
@@ -32,7 +39,11 @@ public class BH_PlayerMovement : MonoBehaviour
             {
                 moveX = -1f;
             }
-            rb.velocity = new Vector2(moveX, moveY) * speed;
+
+            Vector2 a = Vector2.zero;
+            vel = Vector2.SmoothDamp(vel, new Vector2(moveX, moveY) * speed, ref a, smoothTime);
+
+            rb.velocity = vel;
         }
 
         else if (!IsPlayer1)
@@ -54,12 +65,16 @@ public class BH_PlayerMovement : MonoBehaviour
             {
                 moveX = -1f;
             }
-            rb.velocity = new Vector2(moveX, moveY) * speed;
+            Vector2 a = Vector2.zero;
+            vel = Vector2.SmoothDamp(vel, new Vector2(moveX, moveY) * speed, ref a, smoothTime);
+
+            rb.velocity = vel;
         }
     }
 
     public void OnDeathPlayer()
     {
+        playermanager.Whodied();
         Destroy(gameObject);
     }
 }

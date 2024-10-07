@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class BH_BulletManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<GameObject> PoolBullet = new List<GameObject>();
 
-    // Update is called once per frame
-    void Update()
+    public void AddOnList(GameObject Bullet)
     {
-        
+        Bullet.SetActive(false);
+        PoolBullet.Add(Bullet);
     }
 }
