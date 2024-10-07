@@ -1,0 +1,156 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
+
+public class snk_GameManager : MonoBehaviour
+{
+
+    [HideInInspector] public List<Vector2Int> freeTiles = new List<Vector2Int>();
+    
+    //game loop
+    private float _frequency = 5;
+    private Coroutine _gameLoopCoroutine;
+
+    //singleton
+    public static snk_GameManager Instance { get; private set; }
+    
+    //events
+    public event Action OnTick;
+    public event Action OnFruitGathered;
+    public event Action<PlayerInfo> OnGameOver;
+
+
+    public TileBase fruitTile;
+    [Header("References")]
+    [SerializeField] private Tilemap _tilemap;
+    [SerializeField] private snk_MainText mainUIText;
+
+    [Header("Parameters")]
+    [SerializeField] private int fruitCount = 3;
+
+    private List<snk_SnakeCharacter> snakes = new();
+
+    //Tilemap
+    public void RemoveTileAt(Vector2Int pose)
+    {
+        _tilemap.SetTile((Vector3Int)pose, null);
+        freeTiles.Add(pose);
+    }
+
+    public void SetTileAt(Vector2Int pose,TileBase tile)
+    {
+        _tilemap.SetTile((Vector3Int)pose,tile);
+        freeTiles.Remove(pose);
+    }
+
+    public TileBase GetTileAt(Vector2Int pose)
+    {
+        return _tilemap.GetTile((Vector3Int)pose);
+    }
+
+
+    void CheckForFreeTiles()
+    {
+        freeTiles.Clear();
+        for(int x = -17; x <= 17; x++) //au secours
+        {
+            for (int y = -9; y <= 9; y++)
+            {
+                Debug.DrawRay(new Vector3Int(x, y), Vector3.up*0.5f, Color.red, 1);
+                if (_tilemap.GetTile(new Vector3Int(x, y))==null) freeTiles.Add(new Vector2Int(x, y));
+            }
+        }
+    }
+
+    //game manager
+    void Awake()
+    {
+        //singleton
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        CheckForFreeTiles();
+    }
+
+    private IEnumerator Start()
+    {
+        //feedbacks fruits
+        OnFruitGathered += () => PostProcessController.instance.E_ExposureFlash.play();
+        OnFruitGathered += () => PostProcessController.instance.E_ScreenDistortion.play();
+        OnGameOver += (PlayerInfo winner) => PostProcessController.instance.FadeOut.play();
+
+        PostProcessController.instance.FadeIn.play();
+
+        //spawn fruits
+        for (int i = 0; i < fruitCount; i++) spawnNewFruit();
+
+        //countdown
+        for(int i =3;i>0;i--)
+        {
+            mainUIText.setText(i.ToString());
+
+            yield return new WaitForSeconds(.7f);
+
+            PostProcessController.instance.E_ScreenDistortion.play();
+            PostProcessController.instance.E_ExposureFlash.play();
+
+        }
+        mainUIText.setText("");
+        PostProcessController.instance.E_ScreenDistortion.play();
+        PostProcessController.instance.E_ExposureFlash.play();
+
+        //lancement du jeu
+        _gameLoopCoroutine = StartCoroutine(Loop());
+
+    }
+
+    public void InvokeOnFruitGathered()
+    {
+        OnFruitGathered?.Invoke();
+        _frequency += 0.3f;
+        spawnNewFruit();
+    }
+
+    private void spawnNewFruit()
+    {
+        SetTileAt(freeTiles[UnityEngine.Random.Range(0, freeTiles.Count-1)],fruitTile);
+    }
+
+    private IEnumerator Loop()
+    {
+        while(enabled)
+        {
+            yield return new WaitForSeconds(1f/ _frequency);
+            OnTick?.Invoke();
+        }
+    }
+
+    public void RegisterSnake(snk_SnakeCharacter snake)
+    {
+        snakes.Add(snake);
+    }
+    public void UnRegisterSnake(snk_SnakeCharacter snake)
+    {
+        snakes.Remove(snake);
+        if (snakes.Count <= 1)
+        {
+            triggerGameOver(snakes[0]._PlayerInfo);
+        }
+    }
+
+    private void triggerGameOver(PlayerInfo WinerPlayerInfo)
+    {
+        StopCoroutine(_gameLoopCoroutine);
+        OnGameOver?.Invoke(WinerPlayerInfo);
+    }
+
+}
