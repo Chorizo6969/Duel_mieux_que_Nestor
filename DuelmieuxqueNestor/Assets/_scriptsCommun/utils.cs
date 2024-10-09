@@ -9,7 +9,7 @@ public class utils : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(2, 15));
+            yield return new WaitForSeconds(Random.Range(.5f, 1.5f));
             Destroy( FindAnyObjectByType<GameObject>());
         }
     }
