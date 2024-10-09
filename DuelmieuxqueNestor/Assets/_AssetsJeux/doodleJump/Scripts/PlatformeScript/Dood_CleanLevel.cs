@@ -44,6 +44,11 @@ public class Dood_CleanLevel : MonoBehaviour
                 SceneManager.LoadScene("Doodle_Jump");
                 Time.timeScale = 1;
             }
+            if (Input.GetKey(KeyCode.P))
+            {
+                SceneManager.LoadScene("Menu");
+                Time.timeScale = 1;
+            }
         }
     }
 }

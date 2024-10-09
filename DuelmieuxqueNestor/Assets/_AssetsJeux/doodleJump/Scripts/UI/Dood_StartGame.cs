@@ -22,6 +22,8 @@ public class Dood_StartGame : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         _player1.GetComponent<Rigidbody2D>().gravityScale = 0;
         _player1.GetComponent<Dood_PlayerMovement>().enabled = false;
         _player2.GetComponent<Dood_PlayerMovement>().enabled = false;
