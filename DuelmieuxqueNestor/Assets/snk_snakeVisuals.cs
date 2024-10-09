@@ -5,12 +5,14 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class snk_snakeVisuals : MonoBehaviour
+namespace Snake
 {
+    public class snk_snakeVisuals : MonoBehaviour
+    {
 
-    [SerializeField] private Tilemap tm ;
-    [Tooltip("up,down,left,right")]
-    Dictionary<Vector2Int, byte> VectorToMask = new Dictionary<Vector2Int, byte>()
+        [SerializeField] private Tilemap tm;
+        [Tooltip("up,down,left,right")]
+        Dictionary<Vector2Int, byte> VectorToMask = new Dictionary<Vector2Int, byte>()
     {
         {Vector2Int.up,Convert.ToByte("00001000", 2)},
         {Vector2Int.down,Convert.ToByte("00000100", 2)},
@@ -19,7 +21,7 @@ public class snk_snakeVisuals : MonoBehaviour
         {Vector2Int.zero,Convert.ToByte("00000000", 2)}
     };
 
-    Dictionary<byte, int> MaskToArrayIndex = new Dictionary<byte, int>()
+        Dictionary<byte, int> MaskToArrayIndex = new Dictionary<byte, int>()
     {
         { Convert.ToByte("00000000", 2),0 },
         { Convert.ToByte("00000100", 2),1 },
@@ -34,37 +36,39 @@ public class snk_snakeVisuals : MonoBehaviour
         { Convert.ToByte("00001001", 2),10 }
     };
 
-    public List<TileBase> tiles = new List<TileBase>();
+        public List<TileBase> tiles = new List<TileBase>();
 
-    public void Redraw(Queue<Vector2Int> queue )
-    {
-        Vector2Int[] ar = queue.ToArray();
-        for(int i = 0; i < ar.Length; i++)
+        public void Redraw(Queue<Vector2Int> queue)
         {
-            Vector2Int ToNext = (ar[Mathf.Clamp( i+1,0,ar.Length-1)] - ar[i]) ;
-            Vector2Int ToPrevious = ar[Mathf.Clamp(i - 1, 0, ar.Length-1)] -ar[i] ;
+            Vector2Int[] ar = queue.ToArray();
+            for (int i = 0; i < ar.Length; i++)
+            {
+                Vector2Int ToNext = (ar[Mathf.Clamp(i + 1, 0, ar.Length - 1)] - ar[i]);
+                Vector2Int ToPrevious = ar[Mathf.Clamp(i - 1, 0, ar.Length - 1)] - ar[i];
 
-            //pour quand il traverse les bords de l'écran
-            if (ToNext.sqrMagnitude > 1) { ToNext.Clamp(-Vector2Int.one, Vector2Int.one);ToNext *= -1; }
-            if (ToPrevious.sqrMagnitude > 1){ ToPrevious.Clamp(-Vector2Int.one, Vector2Int.one); ToPrevious *= -1;}
+                //pour quand il traverse les bords de l'écran
+                if (ToNext.sqrMagnitude > 1) { ToNext.Clamp(-Vector2Int.one, Vector2Int.one); ToNext *= -1; }
+                if (ToPrevious.sqrMagnitude > 1) { ToPrevious.Clamp(-Vector2Int.one, Vector2Int.one); ToPrevious *= -1; }
 
-            byte Mask = (byte)(VectorToMask[ToNext] ^ VectorToMask[ToPrevious]);
-            //print($"U: {ToNext} , V: {ToPrevious} , Mask: {ByteToBinaryString(Mask)} , Index : {MaskToArrayIndex[Mask]}");
+                byte Mask = (byte)(VectorToMask[ToNext] ^ VectorToMask[ToPrevious]);
+                //print($"U: {ToNext} , V: {ToPrevious} , Mask: {ByteToBinaryString(Mask)} , Index : {MaskToArrayIndex[Mask]}");
 
-            tm.SetTile((Vector3Int)ar[i], tiles[MaskToArrayIndex[Mask]]);
-            
+                tm.SetTile((Vector3Int)ar[i], tiles[MaskToArrayIndex[Mask]]);
+
+            }
+        }
+
+        public static string ByteToBinaryString(byte byteIn)
+        {
+            StringBuilder out_string = new StringBuilder();
+            byte mask = 128;
+            for (int i = 7; i >= 0; --i)
+            {
+                out_string.Append((byteIn & mask) != 0 ? "1" : "0");
+                mask >>= 1;
+            }
+            return out_string.ToString();
         }
     }
 
-    public static string ByteToBinaryString(byte byteIn)
-    {
-        StringBuilder out_string = new StringBuilder();
-        byte mask = 128;
-        for (int i = 7; i >= 0; --i)
-        {
-            out_string.Append((byteIn & mask) != 0 ? "1" : "0");
-            mask >>= 1;
-        }
-        return out_string.ToString();
-    }
 }
