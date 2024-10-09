@@ -33,16 +33,7 @@ public class Dood_PlayerJump : MonoBehaviour
         {
             if (collision.gameObject.layer == 6)
             {
-                /*if (_papa.GetComponent<Rigidbody2D>().velocity.x < 0)
-                {
-                    _papa.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                    _papa.GetComponent<Rigidbody2D>().AddForce(transform.right * 425);
-                }
-                else
-                {
-                    _papa.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                    _papa.GetComponent<Rigidbody2D>().AddForce(transform.right * -425);
-                }*/
+                _papa.GetComponent<Rigidbody2D>().AddForce(Vector2.left * Mathf.Sign(collision.transform.position.x - transform.position.x) * 2, ForceMode2D.Impulse);
             }
             if (collision.gameObject.layer == 7 || collision.gameObject.layer == 9)
             {
