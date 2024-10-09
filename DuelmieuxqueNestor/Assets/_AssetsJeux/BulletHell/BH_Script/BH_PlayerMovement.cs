@@ -74,6 +74,7 @@ public class BH_PlayerMovement : MonoBehaviour
 
     public void OnDeathPlayer()
     {
+        playermanager.PlayerList.Remove(gameObject);
         playermanager.Whodied();
         Destroy(gameObject);
     }

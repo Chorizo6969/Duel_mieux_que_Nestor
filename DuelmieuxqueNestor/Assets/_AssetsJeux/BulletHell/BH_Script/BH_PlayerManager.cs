@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BH_PlayerManager : MonoBehaviour
 {
-    public List<GameObject> Player;
+    public List<GameObject> PlayerList;
 
     public TextMeshProUGUI Countdown;
     [SerializeField]
@@ -46,12 +46,25 @@ public class BH_PlayerManager : MonoBehaviour
 
     public void Whodied()
     {
-        foreach (var x in BulletInstanciers)
+        if (PlayerList == null)
         {
-            x.StopCanon();
-        }
-        
+            foreach (var x in BulletInstanciers)
+            {
+                x.StopCanon();
+            }
 
-        TextFinish.gameObject.SetActive(true);
+            TextFinish.gameObject.SetActive(true);
+            TextFinish.text = "Match Nul";
+        }
+        else if (PlayerList.Count == 1)
+        {
+            foreach (var x in BulletInstanciers)
+            {
+                x.StopCanon();
+            }
+
+            TextFinish.gameObject.SetActive(true);
+            TextFinish.text = PlayerList[0].name + " a gagné";
+        }
     }
 }
