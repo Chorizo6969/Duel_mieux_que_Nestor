@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3434384817810630849}
   - component: {fileID: 8137015680583403831}
   - component: {fileID: 3507888875908935276}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bullet
   m_TagString: BH_Bullet
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4800373746184091954}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: -0.87644815, w: 0.4814963}
+  m_LocalPosition: {x: 8.131838, y: 4.0879936, z: 0}
   m_LocalScale: {x: 0.3906, y: 0.3906, z: 0.3906}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -141,7 +141,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

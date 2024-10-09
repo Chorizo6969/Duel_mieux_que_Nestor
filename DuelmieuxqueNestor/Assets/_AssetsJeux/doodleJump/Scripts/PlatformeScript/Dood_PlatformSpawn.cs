@@ -55,15 +55,16 @@ public class Dood_PlatformSpawn : MonoBehaviour
                 plateform.transform.position = _spawnList[index].transform.position;
             }
         }
+
     }
 
     /// <summary>
     /// Coroutine qui augmente la vitesse de spawn des plateformes ( car le jeu tourne de + en + vite)
     /// </summary>
     /// <returns> Retourne un délai d'attente de 7 secondes (en lien avec le script camscroll) </returns>
-    IEnumerator SpeedSpawnUp() //Ou alors Time scale * 2 ?
+    IEnumerator SpeedSpawnUp()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(4);
         _spawnSpeed += 0.25f;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 /// <summary>
 /// Script qui gère les déplacements des 2 joueurs
@@ -12,10 +13,13 @@ public class Dood_PlayerMovement : MonoBehaviour
     private Dood_Camscroll _camscroll; //liens vers le script camScroll
 
     [SerializeField]
-    private bool _joueur1; //Pour pouvoir différentier depuis l'inspecteur qui est joueur 1
+    private bool _joueur1; //Pour pouvoir différencier depuis l'inspecteur qui est joueur 1
 
     private void Update()
     {
+
+        //Debug.Log(_rb.velocity.x);
+
         if (_joueur1) //Joueur 1
         {
             if (Input.GetKey(KeyCode.D))

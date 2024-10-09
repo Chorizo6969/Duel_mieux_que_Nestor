@@ -31,6 +31,19 @@ public class Dood_PlayerJump : MonoBehaviour
         _actualPos = _papa.transform.position; // Au moment ou le joueur touche une plateforme, on va comparé les 2 position calculé
         if (_actualPos.y <= _oldPos.y) // Si La position calculé à chaque frame est plus grande que la position lors du contact avec la plateforme, alors le personnage tombe
         {
+            if (collision.gameObject.layer == 6)
+            {
+                /*if (_papa.GetComponent<Rigidbody2D>().velocity.x < 0)
+                {
+                    _papa.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    _papa.GetComponent<Rigidbody2D>().AddForce(transform.right * 425);
+                }
+                else
+                {
+                    _papa.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    _papa.GetComponent<Rigidbody2D>().AddForce(transform.right * -425);
+                }*/
+            }
             if (collision.gameObject.layer == 7 || collision.gameObject.layer == 9)
             {
                 _papa.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -52,7 +65,7 @@ public class Dood_PlayerJump : MonoBehaviour
     /// <returns></returns>
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(_brockenPlatform);
     }
 }

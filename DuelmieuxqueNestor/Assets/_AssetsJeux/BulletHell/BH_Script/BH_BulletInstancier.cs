@@ -12,16 +12,31 @@ public class BH_BulletInstancier : MonoBehaviour
     public float MaxAngle = 45f;
     private bool _rotation = true;
 
+    [SerializeField]
+    private BH_BulletManager bulletManager;
 
-    private void Start()
-    {
-        StartCoroutine(ShootBullet());
-        
-    }
+    private bool Isplaying;
+
+
 
     void Update()
     {
-        Rotation();
+        if (Isplaying == true)
+        {
+            Rotation();
+        }       
+    }
+    public void StartCanon()
+    {
+        StartCoroutine(ShootBullet());   
+        CurrentAngle = Random.Range(MinAngle, MaxAngle);
+        Isplaying = true;
+    }
+
+    public void StopCanon()
+    {
+        Isplaying = false;
+        StopAllCoroutines();
     }
 
     void Rotation()
@@ -52,9 +67,9 @@ public class BH_BulletInstancier : MonoBehaviour
 
     private IEnumerator ShootBullet()
     {
-        yield return new WaitForSeconds(0.5f);
-        GameObject balle = Instantiate(BulletPrefab, ShootGizmo.position, ShootGizmo.rotation);
-        Rigidbody2D rb = balle.GetComponent<Rigidbody2D>();
+        yield return new WaitForSeconds(0.40f);
+        GameObject Bullet = Instantiate(BulletPrefab, ShootGizmo.position, ShootGizmo.rotation);
+        Rigidbody2D rb = Bullet.GetComponent<Rigidbody2D>();
         rb.velocity = ShootGizmo.right * BulletSpeed;
         
         StartCoroutine(ShootBullet());

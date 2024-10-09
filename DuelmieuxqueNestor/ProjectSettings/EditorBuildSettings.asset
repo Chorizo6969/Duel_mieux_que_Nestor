@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Doodle_Jump.unity
     guid: b3f2fac9b4125f042956c09bc6110010
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: cf01a5a17fc22dd4f9ed482ce6cde9b3
+  - enabled: 1
+    path: "Assets/Scenes/Th\xE9o.unity"
+    guid: 981b392030f442c438715e71e60da4c6
+  - enabled: 1
+    path: Assets/Scenes/Nathan.unity
+    guid: f70a3ed87eca6fe45ab05cf4dfea5267
   m_configObjects: {}
