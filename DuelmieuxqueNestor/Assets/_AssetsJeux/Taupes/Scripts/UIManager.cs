@@ -53,12 +53,14 @@ public class UIManager : MonoBehaviour
         {
             Score += 1;
             ScoreText.text = "Joueur 1 : " + Score.ToString();
+            StartCoroutine(TextScale(ScoreText.transform));
         }
 
         else
         {
             ScoreJ2 += 1;
             ScoreTextJ2.text = "Joueur 2 : " + ScoreJ2.ToString();
+            StartCoroutine(TextScale(ScoreTextJ2.transform));
         }
 
         CheckVictory();
@@ -82,5 +84,13 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+    }
+
+    IEnumerator TextScale(Transform t)
+    {
+        t.localScale = new Vector2(1.5f, 1.5f);
+        yield return new WaitForSeconds(0.2f);
+        t.localScale = Vector2.one;
+        yield return null;
     }
 }
